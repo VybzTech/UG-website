@@ -1,9 +1,10 @@
-// Add to main.jsx
-import { useEffect } from 'react';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+import './styles/globals.css'
 
-// useEffect(() => {
-//   window.dataLayer = window.dataLayer || [];
-//   function gtag(){dataLayer.push(arguments);}
-//   gtag('js', new Date());
-//   gtag('config', 'GA_MEASUREMENT_ID');
-// }, []);
+ReactDOM.createRoot(document?.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+)
