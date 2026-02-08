@@ -15,117 +15,17 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import Navbar from "./Navbar";
+import Hero from "./Hero";
+import ComboText from "@/components/ui/ComboText";
+import { COLORS } from "@/constants/colors";
 
 const Landing = () => {
   const navigate = useNavigate();
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { duration: 0.8, staggerChildren: 0.2 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  };
-
   return (
     <div className="min-h-screen bg-white font-sans overflow-x-hidden selection:bg-yellow-200">
-     <Navbar />
-
-      {/* Hero Section */}
-      <header
-        id="about"
-        className="relative pt-32 pb-16 lg:pt-48 lg:pb-40 overflow-hidden"
-      >
-        {/* Background shapes */}
-        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-yellow-100/40 rounded-full blur-3xl -z-10 animate-pulse" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-50/40 rounded-full blur-3xl -z-10" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            className="text-center max-w-5xl mx-auto"
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}
-          >
-            <motion.div
-              variants={itemVariants}
-              className="inline-block mb-4 px-4 py-1.5 rounded-full bg-yellow-50 border border-yellow-200 text-yellow-800 text-sm font-semibold tracking-wide uppercase"
-            >
-              The Future of Renting
-            </motion.div>
-
-            <motion.h1
-              variants={itemVariants}
-              className="text-5xl md:text-8xl lg:text-9xl font-black text-gray-900 leading-[0.95] lg:leading-[0.9] tracking-tight mb-8"
-            >
-              Move into your <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFCA08] to-yellow-400">
-                Dream Home
-              </span>
-            </motion.h1>
-
-            <motion.p
-              variants={itemVariants}
-              className="max-w-2xl mx-auto text-xl text-gray-500 mb-12 leading-relaxed"
-            >
-              Connect directly with landlords or tenants. No agents, no hidden
-              fees, just seamless matching using our AI-powered platform.
-            </motion.p>
-
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-8"
-            >
-              {/* Card-like buttons */}
-              <button
-                onClick={() => navigate("/choose-role")}
-                className="w-full sm:w-64 p-1 rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 group"
-              >
-                <div className="bg-white rounded-xl py-6 px-8 h-full flex flex-col items-center gap-3">
-                  <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                    🏠
-                  </div>
-                  <div>
-                    <div className="font-bold text-gray-900 text-lg">
-                      I'm a Landlord
-                    </div>
-                    <div className="text-gray-400 text-sm">List properties</div>
-                  </div>
-                </div>
-              </button>
-
-              <button
-                onClick={() => navigate("/choose-role")}
-                className="w-full sm:w-64 p-1 rounded-2xl bg-gradient-to-br from-[#FFCA08] to-yellow-500 shadow-xl shadow-yellow-200/50 hover:shadow-yellow-300/50 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 group"
-              >
-                <div className="bg-[#FFCA08] rounded-xl py-6 px-8 h-full flex flex-col items-center gap-3 border border-yellow-300/50">
-                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                    🏃
-                  </div>
-                  <div>
-                    <div className="font-bold text-gray-900 text-lg">
-                      I'm a Tenant
-                    </div>
-                    <div className="text-yellow-900/70 text-sm">
-                      Find a home
-                    </div>
-                  </div>
-                </div>
-              </button>
-            </motion.div>
-          </motion.div>
-        </div>
-      </header>
-
+      <Navbar />
+      <Hero />
       {/* Feature Section 1: Create Profile */}
       <section
         id="services"
@@ -540,3 +440,4 @@ const Landing = () => {
 };
 
 export default Landing;
+ 

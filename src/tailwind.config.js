@@ -26,6 +26,7 @@ export default {
         'slideInLeft': 'slideInLeft 0.8s ease-out',
         'float': 'float 3s ease-in-out infinite',
         'glow': 'glow 2s ease-in-out infinite',
+        'ripple': 'ripple 0.6s linear forwards',
       },
       keyframes: {
         fadeInUp: {
@@ -48,8 +49,14 @@ export default {
           '0%, 100%': { boxShadow: '0 0 20px rgba(250, 204, 21, 0.5)' },
           '50%': { boxShadow: '0 0 40px rgba(250, 204, 21, 0.8)' },
         },
+        ripple: {
+          '0%': { transform: 'scale(0)', opacity: '1' },
+          '100%': { transform: 'scale(4)', opacity: '0' },
+        },
       },
       fontFamily: {
+        "poppins": ["Poppins", "sans-serif"],
+        hubot: ["Hubot", "sans-serif"],
         sans: ['system-ui', 'sans-serif'],
       },
       boxShadow: {
