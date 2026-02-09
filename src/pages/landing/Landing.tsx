@@ -13,6 +13,8 @@ import {
   Home,
   User,
   ShieldCheck,
+  DollarSign,
+  Mail,
 } from "lucide-react";
 import Navbar from "./Navbar";
 import Hero from "./Hero";
@@ -23,6 +25,12 @@ import FeatureScrollSection, {
   FEATURES,
 } from "@/components/landing/FeatureScrollSection";
 import AdvancedFeatureScrollSection from "@/components/landing/AdvancedFeatureScrollSection";
+import ButtonExamples from "@/components/ui/ButtonExamples";
+import { Input } from "@/components/ui";
+import Select from "@/components/ui/Select";
+import Textarea from "@/components/ui/Textarea";
+import InputExamples from "@/components/ui/InputExamples";
+import ScrollSection from "./ScrollSection";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -30,7 +38,10 @@ const Landing = () => {
   return (
     <div className="min-h-screen bg-white font-sans overflow-x-hidden selection:bg-yellow-200">
       <Navbar />
-      <Hero />
+      <Hero /> 
+      <ScrollSection />
+{/* <InputExamples />
+      <ButtonExamples /> */}
       {/* Feature Section 1: Create Profile */}
       {/* <section
         id="services"
