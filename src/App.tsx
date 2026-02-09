@@ -2,6 +2,9 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import AuthLayout from "@/layouts/AuthLayout";
 import AppLayout from "@/layouts/AppLayout";
+import About from "./pages/about/About";
+import Contact from "./pages/contact/Contact";
+
 
 const Landing = lazy(() => import("@/pages/landing/Landing"));
 
@@ -47,6 +50,7 @@ const LandlordChangePassword = lazy(
 const LandlordSupport = lazy(() => import("@/pages/landlord/Support"));
 
 // Officer Pages
+// const OfficerDashboard = lazy(() => import("@/pages/officer/OfficerDashboard"));
 const OfficerDashboard = lazy(() => import("@/pages/officer/Dashboard"));
 const OfficerLandlords = lazy(() => import("@/pages/officer/Landlords"));
 const OfficerTenants = lazy(() => import("@/pages/officer/Tenants"));
@@ -180,6 +184,8 @@ export default function App() {
 
         {/* Public Routes */}
         <Route path="/" element={<Landing />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} /> 
 
         {/* Default redirect */}
         <Route path="*" element={<Navigate to="/" replace />} />

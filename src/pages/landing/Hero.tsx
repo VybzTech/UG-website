@@ -128,7 +128,7 @@ export default function Hero() {
         {/* CTA Buttons */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-col sm:flex-row gap-5 justify-center items-center"
+          className="flex sm:flex-row gap-5 justify-center items-center"
         >
           {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button

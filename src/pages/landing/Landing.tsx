@@ -18,6 +18,11 @@ import Navbar from "./Navbar";
 import Hero from "./Hero";
 import ComboText from "@/components/ui/ComboText";
 import { COLORS } from "@/constants/colors";
+import Footer from "@/components/common/Footer";
+import FeatureScrollSection, {
+  FEATURES,
+} from "@/components/landing/FeatureScrollSection";
+import AdvancedFeatureScrollSection from "@/components/landing/AdvancedFeatureScrollSection";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -27,7 +32,7 @@ const Landing = () => {
       <Navbar />
       <Hero />
       {/* Feature Section 1: Create Profile */}
-      <section
+      {/* <section
         id="services"
         className="py-20 lg:py-32 bg-white relative overflow-hidden"
       >
@@ -89,7 +94,6 @@ const Landing = () => {
               transition={{ duration: 0.8, type: "spring" }}
             >
               <PhoneMockup className="rotate-[-5deg] hover:rotate-0 transition-transform duration-500">
-                {/* Simulating Profile Screen */}
                 <div className="bg-gray-50 h-full flex flex-col">
                   <div className="h-48 bg-gray-200 relative">
                     <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-24 h-24 bg-white rounded-full p-1 shadow-lg">
@@ -143,10 +147,10 @@ const Landing = () => {
             </motion.div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Feature Section 2: Swipe & Match */}
-      <section className="py-20 lg:py-32 bg-gray-50/50 relative overflow-hidden">
+      {/* <section className="py-20 lg:py-32 bg-gray-50/50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row-reverse items-center gap-16 lg:gap-32">
             <motion.div
@@ -192,12 +196,10 @@ const Landing = () => {
               transition={{ duration: 0.8 }}
             >
               <div className="relative">
-                {/* Decorative cards behind */}
                 <div className="absolute top-0 left-0 w-full h-full bg-gray-200 rounded-[2rem] rotate-[-6deg] scale-90 -z-10 translate-y-4"></div>
                 <div className="absolute top-0 left-0 w-full h-full bg-gray-300 rounded-[2rem] rotate-[-3deg] scale-95 -z-10 translate-y-2"></div>
 
                 <PhoneMockup>
-                  {/* Simulating Swipe Screen */}
                   <div className="flex flex-col h-full bg-gray-50 p-4 pt-12">
                     <div className="flex-1 bg-white rounded-2xl shadow-md overflow-hidden relative group">
                       <div className="absolute inset-0 bg-gray-200">
@@ -214,7 +216,6 @@ const Landing = () => {
                         <p className="text-sm opacity-90">$2,400 / month</p>
                       </div>
 
-                      {/* Like badge simulation */}
                       <div className="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded rotate-12 opacity-0 group-hover:opacity-100 transition-opacity">
                         LIKE
                       </div>
@@ -236,10 +237,10 @@ const Landing = () => {
             </motion.div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Feature Section 3: Move In */}
-      <section className="py-20 lg:py-32 bg-white relative">
+      {/* <section className="py-20 lg:py-32 bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center gap-16 lg:gap-32">
             <motion.div
@@ -279,7 +280,6 @@ const Landing = () => {
               transition={{ duration: 0.8 }}
             >
               <PhoneMockup>
-                {/* Simulating Success/Chat Screen */}
                 <div className="flex flex-col h-full bg-white pt-12 relative overflow-hidden">
                   <div className="absolute top-0 left-0 w-full h-32 bg-yellow-400 -z-10 rounded-b-[3rem]"></div>
                   <div className="flex-1 px-6 pt-8 flex flex-col items-center">
@@ -323,121 +323,26 @@ const Landing = () => {
             </motion.div>
           </div>
         </div>
+      </section> */}
+      <section className="mt-20 mb-20 bg-white block sticky top-[100vh]">
+        {/* <FeatureScrollSection /> */}
+        {/* <AdvancedFeatureScrollSection
+          variant="3d" // Try: default, minimal, detailed
+          animationSpeed="fast" // Try: slow, normal, fast
+          showProgressBar={true} // Show bottom progress bar
+          enableParallax={true} // Add parallax background
+          phonePosition="right" // Try: left, right
+          theme={{
+            primaryColor: "#FFD43B", // Sunglow yellow
+            accentColor: "#000000", // Black
+            backgroundColor: "#FFFFFF", // White
+          }}
+          features={FEATURES}
+        /> */}
       </section>
-
-      {/* Footer */}
-      <footer
-        id="contact"
-        className="bg-white border-t border-gray-100 pt-20 pb-12"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-            <div className="col-span-1 md:col-span-1">
-              <div className="flex items-center gap-2 mb-6">
-                <img
-                  src={logo}
-                  alt="Urban Gravity"
-                  className="h-8 w-auto opacity-90"
-                />
-                <span className="font-bold text-lg">Urban Gravity</span>
-              </div>
-              <p className="text-gray-500 text-sm leading-relaxed mb-6">
-                Urban Gravity isn't just a housing app. It's a platform built on
-                trust, experience, and choice. You're taking an outdated,
-                agent-controlled system and flipping it into a user-first,
-                digital ecosystem.
-              </p>
-              <div className="flex gap-4">
-                {/* Social Icons */}
-                {["IG", "X", "LN"].map((social, i) => (
-                  <div
-                    key={i}
-                    className="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-gray-400 hover:bg-yellow-400 hover:text-black transition-all cursor-pointer font-bold text-xs"
-                  >
-                    {social}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="col-span-3 grid grid-cols-2 md:grid-cols-3 gap-8 md:ml-auto">
-              <div>
-                <h4 className="font-bold text-gray-900 mb-6">Legal</h4>
-                <ul className="space-y-4 text-gray-500 text-sm">
-                  <li className="hover:text-yellow-500 cursor-pointer transition-colors">
-                    Privacy Policy
-                  </li>
-                  <li className="hover:text-yellow-500 cursor-pointer transition-colors">
-                    Pricing
-                  </li>
-                  <li className="hover:text-yellow-500 cursor-pointer transition-colors">
-                    Refund Policy
-                  </li>
-                  <li className="hover:text-yellow-500 cursor-pointer transition-colors">
-                    Terms & Conditions
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-900 mb-6">Company</h4>
-                <ul className="space-y-4 text-gray-500 text-sm">
-                  <li className="hover:text-yellow-500 cursor-pointer transition-colors">
-                    About Us
-                  </li>
-                  <li className="hover:text-yellow-500 cursor-pointer transition-colors">
-                    Live Chat
-                  </li>
-                  <li className="hover:text-yellow-500 cursor-pointer transition-colors">
-                    Careers
-                  </li>
-                  <li className="hover:text-yellow-500 cursor-pointer transition-colors">
-                    FAQs
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-900 mb-6">Download</h4>
-                <div className="space-y-3">
-                  <div className="bg-black text-white px-4 py-2 rounded-lg flex items-center gap-2 cursor-pointer hover:bg-gray-800 transition-colors w-fit">
-                    <span className="text-2xl"></span>
-                    <div className="flex flex-col leading-none">
-                      <span className="text-[10px] uppercase">
-                        Download on the
-                      </span>
-                      <span className="font-bold text-sm">App Store</span>
-                    </div>
-                  </div>
-                  <div className="bg-black text-white px-4 py-2 rounded-lg flex items-center gap-2 cursor-pointer hover:bg-gray-800 transition-colors w-fit">
-                    <span className="text-xl">▶</span>
-                    <div className="flex flex-col leading-none">
-                      <span className="text-[10px] uppercase">Get it on</span>
-                      <span className="font-bold text-sm">Google Play</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-gray-400">
-              © 2026 Urban Gravity. All rights reserved.
-            </p>
-            <div className="flex gap-6 text-xs text-gray-400">
-              <span className="cursor-pointer hover:text-gray-600">
-                Privacy
-              </span>
-              <span className="cursor-pointer hover:text-gray-600">Terms</span>
-              <span className="cursor-pointer hover:text-gray-600">
-                Sitemap
-              </span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      {/* <Footer /> */}
     </div>
   );
 };
 
 export default Landing;
- 

@@ -2,6 +2,8 @@
 /* @import 'tailwindcss/components'; */
 /* @import 'tailwindcss/utilities'; */
 @import './fonts.css';
+@import './feature-scroll-section.css';
+@import './advanced-utilities.css';
 
 @layer base {
   * {

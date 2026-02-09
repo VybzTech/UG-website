@@ -62,7 +62,10 @@ const NavLink: React.FC<NavLinkProps> = ({
     <motion.a
       href={href}
       onClick={handleClick}
-      className={`relative inline-block font-hubot font-medium text-base transition-colors duration-300 overflow-hidden group ${className} outline-none focus:outline-none focus:ring-0 focus:border-none focus:bg-yellow-200/10`}
+      className={`relative inline-block font-hubot font-normal text-[15px]
+         transition-colors duration-300 overflow-hidden px-3.5 py-1 rounded rounded-md
+         group ${className} outline-none focus:outline-none 
+         focus:ring-0 focus:border-none focus:bg-yellow-200/10`}
       style={{
         color: active ? COLORS.primary : COLORS.text,
       }}

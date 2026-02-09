@@ -93,15 +93,16 @@ const Navbar: React.FC = () => {
 
   const navLinks = [
     { label: "Home", href: "#home", id: "home" },
-    { label: "About Us", href: "#about", id: "about" },
-    { label: "Our Services", href: "#services", id: "services" },
-    { label: "Contact", href: "#contact", id: "contact" },
+    { label: "About Us", href: "/about", id: "about" },
+    { label: "Our Services", href: "/about#services", id: "services" },
+    { label: "Contact", href: "/contact", id: "contact" },
   ];
 
-  const handleNavClick = (id: string, e: React.MouseEvent) => {
+  const handleNavClick = (id: string, href: string, e: React.MouseEvent) => {
     e.preventDefault();
     setActiveLink(id);
     setIsOpen(false);
+   if(id !== "home") navigate(`/${href}`);
 
     // Smooth scroll to section
     const element = document.querySelector(id);
@@ -123,9 +124,10 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
           <motion.div
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 hover:cursor-pointer"
             whileHover={{ scale: 1.09 }}
             whileTap={{ scale: 0.95 }}
+            onClick={(e) => handleNavClick("home", "/", e)}
           >
             <img
               src={logo}
@@ -151,7 +153,7 @@ const Navbar: React.FC = () => {
                 key={link.id}
                 href={link.href}
                 active={activeLink === link.id}
-                onClick={(e) => handleNavClick(link.id, e)}
+                onClick={(e) => handleNavClick(link.id, link.href, e)}
               >
                 {link.label}
               </NavLink>
@@ -208,7 +210,7 @@ const Navbar: React.FC = () => {
                 <NavLink
                   href={link.href}
                   active={activeLink === link.id}
-                  onClick={(e) => handleNavClick(link.id, e)}
+                  onClick={(e) => handleNavClick(link.id, link.href, e)}
                   className="block px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors"
                 >
                   {link.label}
