@@ -4,7 +4,7 @@ import AuthLayout from "@/layouts/AuthLayout";
 import AppLayout from "@/layouts/AppLayout";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
-
+import { OptimizedImage } from "./components/ui/Optimizedimage";
 
 const Landing = lazy(() => import("@/pages/landing/Landing"));
 
@@ -50,8 +50,8 @@ const LandlordChangePassword = lazy(
 const LandlordSupport = lazy(() => import("@/pages/landlord/Support"));
 
 // Officer Pages
-const OfficerDashboard = lazy(() => import("@/pages/officer/OfficerDashboard"));
-// const OfficerDashboard = lazy(() => import("@/pages/officer/Dashboard"));
+// const OfficerDashboard = lazy(() => import("@/pages/officer/OfficerDashboard"));
+const OfficerDashboard = lazy(() => import("@/pages/officer/Dashboard"));
 const OfficerLandlords = lazy(() => import("@/pages/officer/Landlords"));
 const OfficerTenants = lazy(() => import("@/pages/officer/Tenants"));
 const OfficerListings = lazy(() => import("@/pages/officer/Listings"));
@@ -84,8 +84,16 @@ const SettingsSecurity = lazy(() => import("@/pages/settings/Security"));
 
 function PageLoader() {
   return (
-    <div className="flex items-center justify-center min-h-[60vh]">
-      <div className="w-8 h-8 border-3 border-primary border-t-transparent rounded-full animate-spin" />
+    <div className="flex items-center justify-center min-h-[100vh] w-screen">
+      {/* <div className="w-8 h-8 border-3 border-primary border-t-transparent rounded-full animate-spin" /> */}
+      <OptimizedImage
+        src="../src/assets/images/ug-logo.png"
+        alt="ug-logo"
+        width={100}
+        height={100}
+        priority={true}
+        className="animate-pulse"
+      />
     </div>
   );
 }
@@ -185,7 +193,7 @@ export default function App() {
         {/* Public Routes */}
         <Route path="/" element={<Landing />} />
         <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} /> 
+        <Route path="/contact" element={<Contact />} />
 
         {/* Default redirect */}
         <Route path="*" element={<Navigate to="/" replace />} />

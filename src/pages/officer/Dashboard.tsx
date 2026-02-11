@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import Card from '@/components/ui/Card';
 import { Users, Building2, ListChecks, Shield, TrendingUp, FileCheck, BarChart3, ArrowUpRight, Clock } from 'lucide-react';
+import NavigationSlider from '@/components/common/NavigationSlider';
 
 const STATS = [
   { label: 'Total Tenants', value: '1,247', change: '+12.5%', icon: Users, color: '#2196F3' },
@@ -64,6 +65,7 @@ export default function Dashboard() {
           </Card>
         ))}
       </div>
+      {/* <NavigationSlider onNavigate={(page) => console.log('Navigating to:', page)} /> */}
 
       {/* Recent Activity */}
       <Card>

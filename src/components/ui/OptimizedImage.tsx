@@ -70,7 +70,8 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
     return (
       <div
         style={containerStyle}
-        className={`flex items-center justify-center bg-gray-200/75 rounded ${className}`}
+        className={`flex items-center justify-center rounded ${className} 
+        bg-gradient-to-r from-gray-200/75 via-gray-300/75 to-gray-200/75 bg-[length:200%_100%] animate-gradient text-gray-600 hover:bg-gray-300`}
       >
         {errorFallback || (
           <div className="text-gray-400 text-center p-4">
