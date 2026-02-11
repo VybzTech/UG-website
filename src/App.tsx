@@ -50,8 +50,8 @@ const LandlordChangePassword = lazy(
 const LandlordSupport = lazy(() => import("@/pages/landlord/Support"));
 
 // Officer Pages
-// const OfficerDashboard = lazy(() => import("@/pages/officer/OfficerDashboard"));
-const OfficerDashboard = lazy(() => import("@/pages/officer/Dashboard"));
+const OfficerDashboard = lazy(() => import("@/pages/officer/OfficerDashboard"));
+// const OfficerDashboard = lazy(() => import("@/pages/officer/Dashboard"));
 const OfficerLandlords = lazy(() => import("@/pages/officer/Landlords"));
 const OfficerTenants = lazy(() => import("@/pages/officer/Tenants"));
 const OfficerListings = lazy(() => import("@/pages/officer/Listings"));

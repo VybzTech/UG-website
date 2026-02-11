@@ -1,0 +1,70 @@
+// app/_layout.tsx
+import { useAuthStore } from "@/store/authStore";
+import { colors } from "@/src/styles/theme/colors";
+import { Stack } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import { ActivityIndicator, View } from "react-native";
+import AppBootstrap from "./bootstrap";
+import NavigationHandler from "@/components/NavigationHandler"; // We'll create this
+
+export default function RootLayout() {
+  const { isHydrated, isLoading } = useAuthStore();
+
+  AppBootstrap();
+
+  // Show loading screen while hydrating or loading
+  if (!isHydrated || isLoading) {
+    return (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: colors.background,
+        }}
+      >
+        <ActivityIndicator size="large" color={colors.primary} />
+      </View>
+    );
+  }
+
+  // Main app navigation
+  return (
+    <>
+      <NavigationHandler />
+      <Stack screenOptions={{ headerShown: false }} initialRouteName="(auth)">
+        <Stack.Screen
+          name="index"
+          options={{
+            gestureEnabled: false,
+          }}
+        />
+        <Stack.Screen
+          name="(auth)"
+          options={{
+            gestureEnabled: false,
+          }}
+        />
+        <Stack.Screen
+          name="(courier)"
+          options={{
+            gestureEnabled: false,
+          }}
+        />
+        <Stack.Screen
+          name="(admin)"
+          options={{
+            gestureEnabled: false,
+          }}
+        />
+        <Stack.Screen
+          name="(mgt)"
+          options={{
+            gestureEnabled: false,
+          }}
+        />
+      </Stack>
+      <StatusBar style="auto" />
+    </>
+  );
+}

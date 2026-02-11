@@ -5,6 +5,7 @@ import { HubotH1, HubotH2, HubotH3, HubotP } from "@/components/ui/HubotText";
 import { Link } from "react-router-dom";
 import Navbar from "../landing/Navbar";
 import PageHero from "@/components/common/PageHero";
+import OptimizedImageExamples from "@/components/ui/OptimizedImageExamples";
 
 /**
  * Contact Page Component
@@ -74,6 +75,7 @@ export default function Contact() {
           Contact Us
         </HubotH1>
       </PageHero>
+      <OptimizedImageExamples />
 
       {/* FAQ & Form Section */}
       <section className="py-20 md:py-32 px-6 md:px-12 bg-white">

@@ -40,8 +40,9 @@ const Landing = () => {
       <Navbar />
       <Hero /> 
       <ScrollSection />
-{/* <InputExamples />
-      <ButtonExamples /> */}
+      {/* <ButtonExamples />
+<InputExamples /> */}
+      
       {/* Feature Section 1: Create Profile */}
       {/* <section
         id="services"

@@ -4,6 +4,8 @@
 @import './fonts.css';
 @import './feature-scroll-section.css';
 @import './advanced-utilities.css';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+/* Fonts CSS - Load all custom fonts */
 
 @layer base {
   * {
