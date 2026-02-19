@@ -5,6 +5,7 @@ import AppLayout from "@/layouts/AppLayout";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
 import { OptimizedImage } from "./components/ui/Optimizedimage";
+import OfficerLayout from "./layouts/OfficerLayout";
 
 const Landing = lazy(() => import("@/pages/landing/Landing"));
 
@@ -150,6 +151,17 @@ export default function App() {
           />
           <Route path="/landlord/support" element={<LandlordSupport />} />
 
+          {/* Agent */}
+          <Route path="/agent" element={<AgentExplore />} />
+          <Route path="/agent/listings" element={<AgentListings />} />
+          <Route path="/agent/profile" element={<AgentProfile />} />
+
+          {/* Settings */}
+          <Route path="/settings/account" element={<SettingsAccount />} />
+          <Route path="/settings/security" element={<SettingsSecurity />} />
+        </Route>
+
+        <Route element={<OfficerLayout />}>
           {/* Officer */}
           <Route path="/officer" element={<OfficerDashboard />} />
           <Route path="/officer/landlords" element={<OfficerLandlords />} />
@@ -179,15 +191,6 @@ export default function App() {
             path="/officer/notifications"
             element={<OfficerNotifications />}
           />
-
-          {/* Agent */}
-          <Route path="/agent" element={<AgentExplore />} />
-          <Route path="/agent/listings" element={<AgentListings />} />
-          <Route path="/agent/profile" element={<AgentProfile />} />
-
-          {/* Settings */}
-          <Route path="/settings/account" element={<SettingsAccount />} />
-          <Route path="/settings/security" element={<SettingsSecurity />} />
         </Route>
 
         {/* Public Routes */}
