@@ -1,11 +1,9 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import AuthLayout from "@/layouts/AuthLayout";
-import AppLayout from "@/layouts/AppLayout";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
 import { OptimizedImage } from "./components/ui/Optimizedimage";
-import OfficerLayout from "./layouts/OfficerLayout";
 
 const Landing = lazy(() => import("@/pages/landing/Landing"));
 
@@ -19,69 +17,69 @@ const BasicInfo = lazy(() => import("@/pages/auth/BasicInfo"));
 const Preview = lazy(() => import("@/pages/auth/Preview"));
 
 // Tenant Pages
-const TenantExplore = lazy(() => import("@/pages/tenant/Explore"));
-const TenantHomes = lazy(() => import("@/pages/tenant/Homes"));
-const TenantProfile = lazy(() => import("@/pages/tenant/Profile"));
-const PropertyDetail = lazy(() => import("@/pages/tenant/PropertyDetail"));
-const TenantPreferences = lazy(() => import("@/pages/tenant/Preferences"));
-const TenantMatches = lazy(() => import("@/pages/tenant/Matches"));
-const TenantPlans = lazy(() => import("@/pages/tenant/Plans"));
-const TenantChat = lazy(() => import("@/pages/tenant/Chat"));
-const LandlordProfileView = lazy(
-  () => import("@/pages/tenant/LandlordProfile"),
-);
-const TenantChangePassword = lazy(
-  () => import("@/pages/tenant/ChangePassword"),
-);
-const TenantSupport = lazy(() => import("@/pages/tenant/Support"));
+// const TenantExplore = lazy(() => import("@/pages/tenant/Explore"));
+// const TenantHomes = lazy(() => import("@/pages/tenant/Homes"));
+// const TenantProfile = lazy(() => import("@/pages/tenant/Profile"));
+// const PropertyDetail = lazy(() => import("@/pages/tenant/PropertyDetail"));
+// const TenantPreferences = lazy(() => import("@/pages/tenant/Preferences"));
+// const TenantMatches = lazy(() => import("@/pages/tenant/Matches"));
+// const TenantPlans = lazy(() => import("@/pages/tenant/Plans"));
+// const TenantChat = lazy(() => import("@/pages/tenant/Chat"));
+// const LandlordProfileView = lazy(
+//   () => import("@/pages/tenant/LandlordProfile"),
+// );
+// const TenantChangePassword = lazy(
+//   () => import("@/pages/tenant/ChangePassword"),
+// );
+// const TenantSupport = lazy(() => import("@/pages/tenant/Support"));
 
-// Landlord Pages
-const LandlordExplore = lazy(() => import("@/pages/landlord/Explore"));
-const LandlordMatches = lazy(() => import("@/pages/landlord/Matches"));
-const LandlordListings = lazy(() => import("@/pages/landlord/Listings"));
-const LandlordProfile = lazy(() => import("@/pages/landlord/Profile"));
-const CreateListing = lazy(() => import("@/pages/landlord/CreateListing"));
-const ListingDetail = lazy(() => import("@/pages/landlord/ListingDetail"));
-const TenantProfileView = lazy(() => import("@/pages/landlord/TenantProfile"));
-const LandlordAnalytics = lazy(() => import("@/pages/landlord/Analytics"));
-const LandlordChat = lazy(() => import("@/pages/landlord/Chat"));
-const LandlordChangePassword = lazy(
-  () => import("@/pages/landlord/ChangePassword"),
-);
-const LandlordSupport = lazy(() => import("@/pages/landlord/Support"));
+// // Landlord Pages
+// const LandlordExplore = lazy(() => import("@/pages/landlord/Explore"));
+// const LandlordMatches = lazy(() => import("@/pages/landlord/Matches"));
+// const LandlordListings = lazy(() => import("@/pages/landlord/Listings"));
+// const LandlordProfile = lazy(() => import("@/pages/landlord/Profile"));
+// const CreateListing = lazy(() => import("@/pages/landlord/CreateListing"));
+// const ListingDetail = lazy(() => import("@/pages/landlord/ListingDetail"));
+// const TenantProfileView = lazy(() => import("@/pages/landlord/TenantProfile"));
+// const LandlordAnalytics = lazy(() => import("@/pages/landlord/Analytics"));
+// const LandlordChat = lazy(() => import("@/pages/landlord/Chat"));
+// const LandlordChangePassword = lazy(
+//   () => import("@/pages/landlord/ChangePassword"),
+// );
+// const LandlordSupport = lazy(() => import("@/pages/landlord/Support"));
 
-// Officer Pages
-// const OfficerDashboard = lazy(() => import("@/pages/officer/OfficerDashboard"));
-const OfficerDashboard = lazy(() => import("@/pages/officer/Dashboard"));
-const OfficerLandlords = lazy(() => import("@/pages/officer/Landlords"));
-const OfficerTenants = lazy(() => import("@/pages/officer/Tenants"));
-const OfficerListings = lazy(() => import("@/pages/officer/Listings"));
-const OfficerSettings = lazy(() => import("@/pages/officer/Settings"));
-const OfficerLandlordDetail = lazy(
-  () => import("@/pages/officer/LandlordDetail"),
-);
-const OfficerTenantDetail = lazy(() => import("@/pages/officer/TenantDetail"));
-const OfficerListingDetail = lazy(
-  () => import("@/pages/officer/ListingDetail"),
-);
-const VerificationQueue = lazy(
-  () => import("@/pages/officer/VerificationQueue"),
-);
-const UpgradeRequests = lazy(() => import("@/pages/officer/UpgradeRequests"));
-const AuditTrail = lazy(() => import("@/pages/officer/AuditTrail"));
-const OfficerAnalytics = lazy(() => import("@/pages/officer/Analytics"));
-const OfficerNotifications = lazy(
-  () => import("@/pages/officer/Notifications"),
-);
+// // Officer Pages
+// // const OfficerDashboard = lazy(() => import("@/pages/officer/OfficerDashboard"));
+// const OfficerDashboard = lazy(() => import("@/pages/officer/Dashboard"));
+// const OfficerLandlords = lazy(() => import("@/pages/officer/Landlords"));
+// const OfficerTenants = lazy(() => import("@/pages/officer/Tenants"));
+// const OfficerListings = lazy(() => import("@/pages/officer/Listings"));
+// const OfficerSettings = lazy(() => import("@/pages/officer/Settings"));
+// const OfficerLandlordDetail = lazy(
+//   () => import("@/pages/officer/LandlordDetail"),
+// );
+// const OfficerTenantDetail = lazy(() => import("@/pages/officer/TenantDetail"));
+// const OfficerListingDetail = lazy(
+//   () => import("@/pages/officer/ListingDetail"),
+// );
+// const VerificationQueue = lazy(
+//   () => import("@/pages/officer/VerificationQueue"),
+// );
+// const UpgradeRequests = lazy(() => import("@/pages/officer/UpgradeRequests"));
+// const AuditTrail = lazy(() => import("@/pages/officer/AuditTrail"));
+// const OfficerAnalytics = lazy(() => import("@/pages/officer/Analytics"));
+// const OfficerNotifications = lazy(
+//   () => import("@/pages/officer/Notifications"),
+// );
 
-// Agent Pages
-const AgentExplore = lazy(() => import("@/pages/agent/Explore"));
-const AgentListings = lazy(() => import("@/pages/agent/Listings"));
-const AgentProfile = lazy(() => import("@/pages/agent/Profile"));
+// // Agent Pages
+// const AgentExplore = lazy(() => import("@/pages/agent/Explore"));
+// const AgentListings = lazy(() => import("@/pages/agent/Listings"));
+// const AgentProfile = lazy(() => import("@/pages/agent/Profile"));
 
-// Settings
-const SettingsAccount = lazy(() => import("@/pages/settings/Account"));
-const SettingsSecurity = lazy(() => import("@/pages/settings/Security"));
+// // Settings
+// const SettingsAccount = lazy(() => import("@/pages/settings/Account"));
+// const SettingsSecurity = lazy(() => import("@/pages/settings/Security"));
 
 function PageLoader() {
   return (
@@ -115,8 +113,8 @@ export default function App() {
         </Route>
 
         {/* App Routes - Protected */}
-        <Route element={<AppLayout />}>
-          {/* Tenant */}
+        {/* <Route element={<AppLayout />}>
+          {/* Tenant /}
           <Route path="/tenant" element={<TenantExplore />} />
           <Route path="/tenant/homes" element={<TenantHomes />} />
           <Route path="/tenant/profile" element={<TenantProfile />} />
@@ -135,7 +133,7 @@ export default function App() {
           />
           <Route path="/tenant/support" element={<TenantSupport />} />
 
-          {/* Landlord */}
+          {/* Landlord /}
           <Route path="/landlord" element={<LandlordExplore />} />
           <Route path="/landlord/matches" element={<LandlordMatches />} />
           <Route path="/landlord/listings" element={<LandlordListings />} />
@@ -151,18 +149,18 @@ export default function App() {
           />
           <Route path="/landlord/support" element={<LandlordSupport />} />
 
-          {/* Agent */}
+          {/* Agent /}
           <Route path="/agent" element={<AgentExplore />} />
           <Route path="/agent/listings" element={<AgentListings />} />
           <Route path="/agent/profile" element={<AgentProfile />} />
 
-          {/* Settings */}
+          {/* Settings /}
           <Route path="/settings/account" element={<SettingsAccount />} />
           <Route path="/settings/security" element={<SettingsSecurity />} />
-        </Route>
+        </Route> */}
 
-        <Route element={<OfficerLayout />}>
-          {/* Officer */}
+        {/* <Route element={<OfficerLayout />}>
+          {/* Officer /}
           <Route path="/officer" element={<OfficerDashboard />} />
           <Route path="/officer/landlords" element={<OfficerLandlords />} />
           <Route path="/officer/tenants" element={<OfficerTenants />} />
@@ -191,7 +189,7 @@ export default function App() {
             path="/officer/notifications"
             element={<OfficerNotifications />}
           />
-        </Route>
+        </Route> */}
 
         {/* Public Routes */}
         <Route path="/" element={<Landing />} />

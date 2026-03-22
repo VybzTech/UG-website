@@ -6,7 +6,7 @@ const iconMap = {
   linkedin: Linkedin,
 };
 
-export default function SocialButton({ icon, href }) {
+export default function SocialButton({ icon, href }: { icon: string; href: string }) {
   const Icon = iconMap[icon] || Instagram;
 
   return (
@@ -19,4 +19,4 @@ export default function SocialButton({ icon, href }) {
       <Icon size={20} className="group-hover:rotate-12 transition-transform duration-300" />
     </a>
   );
-}
+} 

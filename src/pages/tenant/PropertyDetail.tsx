@@ -25,7 +25,7 @@ export default function PropertyDetail() {
     <div className="max-w-3xl mx-auto">
       {/* Image Carousel */}
       <div className="relative h-72 md:h-96 bg-[#F5F5F5]">
-        <img src={images[currentImage]} alt={property.title} className="w-full h-full object-cover" />
+        <img src={images[currentImage]} alt={property.name} className="w-full h-full object-cover" />
         <button onClick={() => navigate(-1)} className="absolute top-4 left-4 p-2 bg-white rounded-full shadow-md cursor-pointer"><ArrowLeft size={20} /></button>
         <button className="absolute top-4 right-4 p-2 bg-white rounded-full shadow-md cursor-pointer"><Heart size={20} className="text-[#F44336]" /></button>
         {/* Image dots */}
@@ -39,16 +39,16 @@ export default function PropertyDetail() {
       <div className="p-6 space-y-6">
         {/* Title & Price */}
         <div>
-          <h1 className="text-2xl font-bold text-[#1A1A1A]">{property.title}</h1>
-          <div className="flex items-center gap-2 mt-1 text-[#666]"><MapPin size={14} /><span className="text-sm">{property.address}, {property.city}</span></div>
-          <p className="text-2xl font-bold text-[#FFCA08] mt-3">₦{(property.priceMonthly || 0).toLocaleString()}<span className="text-sm text-[#999] font-normal">/month</span></p>
+          <h1 className="text-2xl font-bold text-[#1A1A1A]">{property.name}</h1>
+          <div className="flex items-center gap-2 mt-1 text-[#666]"><MapPin size={14} /><span className="text-sm">{property.location}, {property.description}</span></div>
+          <p className="text-2xl font-bold text-[#FFCA08] mt-3">₦{(property.price || 0).toLocaleString()}<span className="text-sm text-[#999] font-normal">/month</span></p>
         </div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-4 gap-3">
           {[
-            { icon: Bed, label: 'Beds', value: property.beds || 3 },
-            { icon: Bath, label: 'Baths', value: property.baths || 2 },
+            { icon: Bed, label: 'Beds', value: property.bedrooms || 3 },
+            { icon: Bath, label: 'Baths', value: property.bathrooms || 2 },
             { icon: Maximize, label: 'Sqft', value: property.squareFeet || 1200 },
             { icon: Building, label: 'Floor', value: property.floor || 2 },
           ].map((s) => (

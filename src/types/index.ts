@@ -1,6 +1,5 @@
 export * from './enums';
 export * from './profiles';
-export * from './property';
 export * from './store';
 export * from './verification';
 export * from './bargain';
