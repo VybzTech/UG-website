@@ -1,10 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 @import 'tailwindcss';
 /* @import 'tailwindcss/components'; */
 /* @import 'tailwindcss/utilities'; */
 @import './fonts.css';
 @import './feature-scroll-section.css';
 @import './advanced-utilities.css';
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 /* Fonts CSS - Load all custom fonts */
 
 @layer base {
@@ -20,7 +20,12 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-black tracking-tight;
   }
 }
@@ -40,12 +45,14 @@
 }
 
 @layer utilities {
+
   /* Custom animations */
   @keyframes fadeInUp {
     from {
       opacity: 0;
       transform: translateY(20px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -57,6 +64,7 @@
       opacity: 0;
       transform: translateX(100px);
     }
+
     to {
       opacity: 1;
       transform: translateX(0);
@@ -68,6 +76,7 @@
       opacity: 0;
       transform: translateX(-100px);
     }
+
     to {
       opacity: 1;
       transform: translateX(0);
@@ -75,27 +84,36 @@
   }
 
   @keyframes glow {
-    0%, 100% {
+
+    0%,
+    100% {
       box-shadow: 0 0 20px rgba(250, 204, 21, 0.5);
     }
+
     50% {
       box-shadow: 0 0 40px rgba(250, 204, 21, 0.8);
     }
   }
 
   @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0px);
     }
+
     50% {
       transform: translateY(-20px);
     }
   }
 
   @keyframes pulse-border {
-    0%, 100% {
+
+    0%,
+    100% {
       box-shadow: inset 0 0 0 2px rgba(250, 204, 21, 0.3);
     }
+
     50% {
       box-shadow: inset 0 0 0 2px rgba(250, 204, 21, 0.8);
     }
@@ -164,6 +182,7 @@
   0% {
     background-position: -1000px 0;
   }
+
   100% {
     background-position: 1000px 0;
   }
@@ -171,14 +190,13 @@
 
 .shimmer {
   animation: shimmer 2s infinite;
-  background: linear-gradient(
-    to right,
-    #f0f0f0 8%,
-    #f9f9f9 18%,
-    #f0f0f0 33%
-  );
+  background: linear-gradient(to right,
+      #f0f0f0 8%,
+      #f9f9f9 18%,
+      #f0f0f0 33%);
   background-size: 800px 104px;
 }
+
 /*  */
 /*  */
 /*  */
@@ -188,6 +206,7 @@
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -199,6 +218,7 @@
     opacity: 0;
     transform: scale(0.95);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -209,6 +229,7 @@
   0% {
     background-position: -1000px 0;
   }
+
   100% {
     background-position: 1000px 0;
   }
