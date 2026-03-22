@@ -13,7 +13,7 @@ interface OptimizedImageProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, 
   priority?: boolean;
 }
 
-export const OptimizedImage: React.FC<OptimizedImageProps> = ({
+const OptimizedImage: React.FC<OptimizedImageProps> = ({
   src,
   alt,
   width,
@@ -119,3 +119,5 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
     />
   );
 };
+
+export default OptimizedImage;
