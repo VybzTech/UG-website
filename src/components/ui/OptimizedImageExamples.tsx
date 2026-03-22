@@ -1,4 +1,4 @@
-import { OptimizedImage } from "./Optimizedimage";
+import OptimizedImage from "./OptimizedImage";
 
 // Example usage in your components
 export default function ImageGalleryExample() {

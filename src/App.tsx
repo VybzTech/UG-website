@@ -3,7 +3,7 @@ import { lazy, Suspense } from "react";
 import AuthLayout from "@/layouts/AuthLayout";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
-import OptimizedImage from "@/components/ui/Optimizedimage";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 
 const Landing = lazy(() => import("@/pages/landing/Landing"));
 
