@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useEffect, useState, type ReactNode } from 'react';
-import { HubotH1, HubotH2, HubotP } from '../ui/HubotText';
+import { HubotH1, HubotH2, HubotP } from '../../components/ui/HubotText';
 
 /**
  * ============================================================================
@@ -378,235 +378,235 @@ export const AdvancedFeatureScrollSection: React.FC<
   theme = {},
   children,
 }) => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState<ScrollProgress>({
-    current: 0,
-    progress: 0,
-  });
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [scrollProgress, setScrollProgress] = useState<ScrollProgress>({
+      current: 0,
+      progress: 0,
+    });
 
-  const animationSpeedMap = {
-    slow: 0.5,
-    normal: 0.3,
-    fast: 0.15,
-  };
-
-  const animationDuration = animationSpeedMap[animationSpeed];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current || !containerRef.current) return;
-
-      const sectionRect = sectionRef.current.getBoundingClientRect();
-      const sectionHeight = sectionRef.current.offsetHeight;
-      const sectionStart = sectionHeight;
-      const viewportCenter = window.innerHeight / 2;
-      const distance = sectionRect.top - viewportCenter;
-      const totalDistance = sectionHeight + window.innerHeight;
-
-      const rawProgress =
-        ((sectionStart - distance) / totalDistance) * features.length;
-      const clampedProgress = Math.max(
-        0,
-        Math.min(features.length - 0.01, rawProgress)
-      );
-
-      const currentFeatureIndex = Math.floor(clampedProgress);
-      const progressWithinFeature = clampedProgress - currentFeatureIndex;
-
-      const newProgress = {
-        current: currentFeatureIndex,
-        progress: progressWithinFeature,
-      };
-
-      setScrollProgress(newProgress);
-
-      // Call callback when feature changes
-      if (onFeatureChange && currentFeatureIndex !== scrollProgress.current) {
-        onFeatureChange(currentFeatureIndex);
-      }
+    const animationSpeedMap = {
+      slow: 0.5,
+      normal: 0.3,
+      fast: 0.15,
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [features.length, scrollProgress.current, onFeatureChange]);
+    const animationDuration = animationSpeedMap[animationSpeed];
 
-  const currentFeature = features[scrollProgress.current];
-  const nextFeature =
-    scrollProgress.current < features.length - 1
-      ? features[scrollProgress.current + 1]
-      : currentFeature;
+    useEffect(() => {
+      const handleScroll = () => {
+        if (!sectionRef.current || !containerRef.current) return;
 
-  const currentOpacity = 1 - scrollProgress.progress;
-  const nextOpacity = scrollProgress.progress;
-  const currentScale = 0.95 + scrollProgress.progress * 0.05;
-  const nextScale = 0.9 + scrollProgress.progress * 0.1;
-  const phoneRotation = scrollProgress.progress * 25;
+        const sectionRect = sectionRef.current.getBoundingClientRect();
+        const sectionHeight = sectionRef.current.offsetHeight;
+        const sectionStart = sectionHeight;
+        const viewportCenter = window.innerHeight / 2;
+        const distance = sectionRect.top - viewportCenter;
+        const totalDistance = sectionHeight + window.innerHeight;
 
-  const contentOrder = phonePosition === 'left' ? 'flex-row-reverse' : 'flex-row';
+        const rawProgress =
+          ((sectionStart - distance) / totalDistance) * features.length;
+        const clampedProgress = Math.max(
+          0,
+          Math.min(features.length - 0.01, rawProgress)
+        );
 
-  return (
-    <div
-      ref={sectionRef}
-      className="relative w-full min-h-[300vh] bg-gradient-to-b from-white to-gray-50"
-      style={{ backgroundColor: theme.backgroundColor }}
-    >
-      {/* Fixed container */}
-      <div className="fixed inset-0 w-full h-screen overflow-hidden bg-white">
-        <div
-          ref={containerRef}
-          className={`w-full h-full px-6 md:px-12 py-12 flex ${contentOrder} items-center justify-between gap-12`}
-          style={{
-            backgroundImage: enableParallax
-              ? `url('/images/parallax-bg.jpg')`
-              : undefined,
-            backgroundAttachment: enableParallax ? 'fixed' : 'scroll',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        >
-          {/* Background overlay for parallax */}
-          {enableParallax && (
-            <div className="absolute inset-0 bg-white/95 pointer-events-none" />
-          )}
+        const currentFeatureIndex = Math.floor(clampedProgress);
+        const progressWithinFeature = clampedProgress - currentFeatureIndex;
 
-          {/* Left side - Text content */}
-          <div className="flex-1 max-w-xl relative z-10">
-            {/* Badge */}
-            {currentFeature.badge && (
+        const newProgress = {
+          current: currentFeatureIndex,
+          progress: progressWithinFeature,
+        };
+
+        setScrollProgress(newProgress);
+
+        // Call callback when feature changes
+        if (onFeatureChange && currentFeatureIndex !== scrollProgress.current) {
+          onFeatureChange(currentFeatureIndex);
+        }
+      };
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      return () => window.removeEventListener('scroll', handleScroll);
+    }, [features.length, scrollProgress.current, onFeatureChange]);
+
+    const currentFeature = features[scrollProgress.current];
+    const nextFeature =
+      scrollProgress.current < features.length - 1
+        ? features[scrollProgress.current + 1]
+        : currentFeature;
+
+    const currentOpacity = 1 - scrollProgress.progress;
+    const nextOpacity = scrollProgress.progress;
+    const currentScale = 0.95 + scrollProgress.progress * 0.05;
+    const nextScale = 0.9 + scrollProgress.progress * 0.1;
+    const phoneRotation = scrollProgress.progress * 25;
+
+    const contentOrder = phonePosition === 'left' ? 'flex-row-reverse' : 'flex-row';
+
+    return (
+      <div
+        ref={sectionRef}
+        className="relative w-full min-h-[300vh] bg-gradient-to-b from-white to-gray-50"
+        style={{ backgroundColor: theme.backgroundColor }}
+      >
+        {/* Fixed container */}
+        <div className="fixed inset-0 w-full h-screen overflow-hidden bg-white">
+          <div
+            ref={containerRef}
+            className={`w-full h-full px-6 md:px-12 py-12 flex ${contentOrder} items-center justify-between gap-12`}
+            style={{
+              backgroundImage: enableParallax
+                ? `url('/images/parallax-bg.jpg')`
+                : undefined,
+              backgroundAttachment: enableParallax ? 'fixed' : 'scroll',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          >
+            {/* Background overlay for parallax */}
+            {enableParallax && (
+              <div className="absolute inset-0 bg-white/95 pointer-events-none" />
+            )}
+
+            {/* Left side - Text content */}
+            <div className="flex-1 max-w-xl relative z-10">
+              {/* Badge */}
+              {currentFeature.badge && (
+                <div
+                  style={{
+                    opacity: currentOpacity,
+                    transition: `opacity ${animationDuration}s ease-out`,
+                  }}
+                >
+                  <HubotP
+                    fontWeight="bold"
+                    size={12}
+                    className="text-yellow-500 uppercase tracking-wider mb-4"
+                  >
+                    {currentFeature.badge}
+                  </HubotP>
+                </div>
+              )}
+
+              {/* Step number with background */}
+              <div className="mb-12 relative h-64 md:h-80">
+                <StepNumber
+                  number={currentFeature.id}
+                  opacity={currentOpacity}
+                  scale={currentScale}
+                />
+                <StepNumber
+                  number={nextFeature.id}
+                  opacity={nextOpacity}
+                  scale={nextScale}
+                />
+              </div>
+
+              {/* Text content */}
               <div
                 style={{
                   opacity: currentOpacity,
-                  transition: `opacity ${animationDuration}s ease-out`,
+                  transform: `translateY(${scrollProgress.progress * 20}px)`,
+                  transition: `all ${animationDuration}s ease-out`,
                 }}
               >
+                {/* Subtitle */}
                 <HubotP
-                  fontWeight="bold"
-                  size={12}
-                  className="text-yellow-500 uppercase tracking-wider mb-4"
+                  fontWeight="medium"
+                  size={14}
+                  className="text-gray-600 uppercase tracking-wider mb-2"
                 >
-                  {currentFeature.badge}
+                  {currentFeature.subtitle}
                 </HubotP>
+
+                {/* Main title */}
+                <HubotH2
+                  fontWeight="extrabold"
+                  size={42}
+                  className="text-black mb-6 leading-tight"
+                >
+                  {currentFeature.title}
+                </HubotH2>
+
+                {/* Description */}
+                <HubotP
+                  fontWeight="regular"
+                  size={18}
+                  className="text-gray-700 leading-relaxed mb-8"
+                >
+                  {currentFeature.description}
+                </HubotP>
+
+                {/* Highlights */}
+                {currentFeature.highlights && (
+                  <Highlights
+                    items={currentFeature.highlights}
+                    opacity={currentOpacity}
+                  />
+                )}
+
+                {/* CTA Button */}
+                <button
+                  onClick={currentFeature.ctaAction}
+                  className="px-8 py-3 bg-yellow-400 hover:bg-yellow-500 text-black font-bold rounded-lg transition-all duration-200 mb-8 hover:scale-105 active:scale-95"
+                  style={{
+                    fontFamily: "'Hubot', sans-serif",
+                  }}
+                >
+                  {currentFeature.ctaText}
+                </button>
               </div>
-            )}
 
-            {/* Step number with background */}
-            <div className="mb-12 relative h-64 md:h-80">
-              <StepNumber
-                number={currentFeature.id}
-                opacity={currentOpacity}
-                scale={currentScale}
-              />
-              <StepNumber
-                number={nextFeature.id}
-                opacity={nextOpacity}
-                scale={nextScale}
-              />
-            </div>
-
-            {/* Text content */}
-            <div
-              style={{
-                opacity: currentOpacity,
-                transform: `translateY(${scrollProgress.progress * 20}px)`,
-                transition: `all ${animationDuration}s ease-out`,
-              }}
-            >
-              {/* Subtitle */}
-              <HubotP
-                fontWeight="medium"
-                size={14}
-                className="text-gray-600 uppercase tracking-wider mb-2"
-              >
-                {currentFeature.subtitle}
-              </HubotP>
-
-              {/* Main title */}
-              <HubotH2
-                fontWeight="extrabold"
-                size={42}
-                className="text-black mb-6 leading-tight"
-              >
-                {currentFeature.title}
-              </HubotH2>
-
-              {/* Description */}
-              <HubotP
-                fontWeight="regular"
-                size={18}
-                className="text-gray-700 leading-relaxed mb-8"
-              >
-                {currentFeature.description}
-              </HubotP>
-
-              {/* Highlights */}
-              {currentFeature.highlights && (
-                <Highlights
-                  items={currentFeature.highlights}
-                  opacity={currentOpacity}
-                />
+              {/* Stats */}
+              {currentFeature.stats && (
+                <Stats stats={currentFeature.stats} opacity={currentOpacity} />
               )}
 
-              {/* CTA Button */}
-              <button
-                onClick={currentFeature.ctaAction}
-                className="px-8 py-3 bg-yellow-400 hover:bg-yellow-500 text-black font-bold rounded-lg transition-all duration-200 mb-8 hover:scale-105 active:scale-95"
-                style={{
-                  fontFamily: "'Hubot', sans-serif",
-                }}
-              >
-                {currentFeature.ctaText}
-              </button>
-            </div>
-
-            {/* Stats */}
-            {currentFeature.stats && (
-              <Stats stats={currentFeature.stats} opacity={currentOpacity} />
-            )}
-
-            {/* Download buttons */}
-            <DownloadButtons
-              buttons={currentFeature.downloadButtons}
-              opacity={currentOpacity}
-            />
-          </div>
-
-          {/* Right side - Phone images */}
-          <div className="flex-1 flex items-center justify-center relative h-full min-h-[600px] z-10">
-            <div className="absolute">
-              <PhoneImage
-                src={currentFeature.phoneImage}
-                rotation={-phoneRotation}
+              {/* Download buttons */}
+              <DownloadButtons
+                buttons={currentFeature.downloadButtons}
                 opacity={currentOpacity}
-                variant={variant}
               />
             </div>
 
-            <div className="absolute">
-              <PhoneImage
-                src={nextFeature.phoneImage}
-                rotation={25 - phoneRotation}
-                opacity={nextOpacity}
-                variant={variant}
-              />
+            {/* Right side - Phone images */}
+            <div className="flex-1 flex items-center justify-center relative h-full min-h-[600px] z-10">
+              <div className="absolute">
+                <PhoneImage
+                  src={currentFeature.phoneImage}
+                  rotation={-phoneRotation}
+                  opacity={currentOpacity}
+                  variant={variant}
+                />
+              </div>
+
+              <div className="absolute">
+                <PhoneImage
+                  src={nextFeature.phoneImage}
+                  rotation={25 - phoneRotation}
+                  opacity={nextOpacity}
+                  variant={variant}
+                />
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Progress bar */}
+        {showProgressBar && (
+          <ProgressBar
+            current={scrollProgress.current}
+            total={features.length}
+            progress={scrollProgress.progress}
+          />
+        )}
+
+        {/* Custom children */}
+        {children}
       </div>
-
-      {/* Progress bar */}
-      {showProgressBar && (
-        <ProgressBar
-          current={scrollProgress.current}
-          total={features.length}
-          progress={scrollProgress.progress}
-        />
-      )}
-
-      {/* Custom children */}
-      {children}
-    </div>
-  );
-};
+    );
+  };
 
 export default AdvancedFeatureScrollSection;

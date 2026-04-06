@@ -1,6 +1,6 @@
 import React from "react";
-import { HubotH1, HubotP } from "../ui/HubotText";
-import Button from "../ui/Button";
+import { HubotH1, HubotP } from "../../components/ui/HubotText";
+import Button from "../../components/ui/Button";
 
 interface SectionHeroProps {
   no: number;

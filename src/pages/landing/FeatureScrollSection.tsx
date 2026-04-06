@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useEffect, useState } from 'react';
-import { HubotH1, HubotH2, HubotP } from '../ui/HubotText';
+import { HubotH1, HubotH2, HubotP } from '../../components/ui/HubotText';
 
 // Type definitions
 interface Feature {

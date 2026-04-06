@@ -101,9 +101,11 @@ export default function App() {
   return (
     <Suspense fallback={<PageLoader />}>
       <Routes>
+        {/* Onboarding — standalone full-screen, NOT inside AuthLayout */}
+        <Route path="/onboarding" element={<Onboarding />} />
+
         {/* Auth Routes */}
         <Route element={<AuthLayout />}>
-          <Route path="/onboarding" element={<Onboarding />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/verify-otp" element={<VerifyOTP />} />

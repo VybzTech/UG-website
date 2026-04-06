@@ -62,10 +62,11 @@ import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import NavLink from "@/components/ui/NavLink";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { COLORS } from "@/constants/colors";
 import ComboText from "@/components/ui/ComboText";
 import CTAButton from "@/components/ui/CTAButton";
+import { useTheme } from "@/contexts/ThemeContext";
 
 /**
  * Example Navbar Component
@@ -80,6 +81,7 @@ const Navbar: React.FC = () => {
   const [activeLink, setActiveLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
+  const { isDark, toggleTheme } = useTheme();
 
   // Track scroll for navbar styling
   useEffect(() => {
@@ -114,7 +116,11 @@ const Navbar: React.FC = () => {
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/80 backdrop-blur-md shadow-lg" : "bg-transparent"
+        scrolled
+          ? isDark
+            ? "bg-gray-900/90 backdrop-blur-md shadow-lg"
+            : "bg-white/80 backdrop-blur-md shadow-lg"
+          : "bg-transparent"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -137,7 +143,7 @@ const Navbar: React.FC = () => {
             <ComboText
               firstText="Urban"
               secondText="Gravity"
-              firstColor={scrolled ? "#000" : COLORS.text}
+              firstColor={scrolled ? (isDark ? "#fff" : "#000") : COLORS.text}
               secondColor={COLORS.primary}
               fontFamily="hubot"
               fontWeight="bold"
@@ -168,39 +174,75 @@ const Navbar: React.FC = () => {
             >
             Get Started
             </motion.button> */}
-          <motion.span whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.95 }}>
-            <CTAButton
-              variant="primary"
-              onClick={() => navigate("/onboarding")}
-              className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 border-none shadow-yellow-200/50 shadow-lg hover:shadow-yellow-300/50"
+          {/* Desktop: theme toggle + Download App */}
+          <div className="hidden md:flex items-center gap-3">
+            <motion.button
+              onClick={toggleTheme}
+              className={`flex items-center justify-center w-9 h-9 rounded-full transition-colors duration-300 ${
+                scrolled
+                  ? isDark
+                    ? "bg-gray-700 text-yellow-400 hover:bg-gray-600"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  : "bg-white/10 text-white hover:bg-white/20"
+              }`}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              aria-label="Toggle theme"
             >
-              Download App
-            </CTAButton>
-          </motion.span>
+              {isDark ? <Sun size={17} /> : <Moon size={17} />}
+            </motion.button>
 
-          {/* Mobile Menu Button */}
-          <motion.button
-            className="md:hidden p-2"
-            onClick={() => setIsOpen(!isOpen)}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {isOpen ? (
-              <X size={24} color={scrolled ? COLORS.text : "white"} />
-            ) : (
-              <Menu size={24} color={scrolled ? COLORS.text : "white"} />
-            )}
-          </motion.button>
+            <motion.span whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.95 }}>
+              <CTAButton
+                variant="primary"
+                onClick={() => navigate("/onboarding")}
+                className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 border-none shadow-yellow-200/50 shadow-lg hover:shadow-yellow-300/50"
+              >
+                Download App
+              </CTAButton>
+            </motion.span>
+          </div>
+
+          {/* Mobile: theme toggle + hamburger */}
+          <div className="md:hidden flex items-center gap-2">
+            <motion.button
+              onClick={toggleTheme}
+              className={`flex items-center justify-center w-8 h-8 rounded-full transition-colors duration-300 ${
+                scrolled
+                  ? isDark
+                    ? "bg-gray-700 text-yellow-400"
+                    : "bg-gray-100 text-gray-700"
+                  : "bg-white/10 text-white"
+              }`}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              aria-label="Toggle theme"
+            >
+              {isDark ? <Sun size={15} /> : <Moon size={15} />}
+            </motion.button>
+            <motion.button
+              className="p-2"
+              onClick={() => setIsOpen(!isOpen)}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {isOpen ? (
+                <X size={24} color={scrolled ? (isDark ? "#fff" : COLORS.text) : "white"} />
+              ) : (
+                <Menu size={24} color={scrolled ? (isDark ? "#fff" : COLORS.text) : "white"} />
+              )}
+            </motion.button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
         <motion.div
-          className="md:hidden overflow-hidden bg-white/95 backdrop-blur-md"
+          className={`md:hidden overflow-hidden backdrop-blur-md ${isDark ? "bg-gray-900/95" : "bg-white/95"}`}
           initial={{ height: 0 }}
           animate={{ height: isOpen ? "auto" : 0 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="px-4 py-4 space-y-2">
+          <div className="px-4 pt-3 pb-6 flex flex-col gap-1">
             {navLinks.map((link) => (
               <motion.div
                 key={link.id}
@@ -211,19 +253,29 @@ const Navbar: React.FC = () => {
                   href={link.href}
                   active={activeLink === link.id}
                   onClick={(e) => handleNavClick(link.id, link.href, e)}
-                  className="block px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+                  className={`block px-4 py-2 rounded-lg transition-colors ${
+                    isDark ? "hover:bg-gray-800" : "hover:bg-gray-100"
+                  }`}
                 >
                   {link.label}
                 </NavLink>
               </motion.div>
             ))}
-            <motion.button
-              className="w-full mt-4 px-6 py-2 bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-semibold rounded-lg"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+
+            {/* Download App — pinned to bottom of mobile menu */}
+            <motion.div
+              className="mt-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isOpen ? 1 : 0 }}
             >
-              Get Started
-            </motion.button>
+              <CTAButton
+                variant="primary"
+                onClick={() => { setIsOpen(false); navigate("/onboarding"); }}
+                className="w-full bg-yellow-400 hover:bg-yellow-500 text-gray-900 border-none shadow-yellow-200/50 shadow-lg hover:shadow-yellow-300/50 justify-center"
+              >
+                Download App
+              </CTAButton>
+            </motion.div>
           </div>
         </motion.div>
       </div>
