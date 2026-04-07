@@ -1,31 +1,39 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { HubotH2, HubotP } from '@/components/ui/HubotText';
 import Button from '@/components/ui/Button';
 import { ABOUT_VISION } from '@/constants/utils';
 import BumbleBImg from '@/assets/images/landing/BumbleB.jpg';
+import OptimizedImage from '@/components/ui/OptimizedImage';
 
 const VisionSection: React.FC = () => (
-  <section className="py-20 md:py-32 px-6 md:px-12 bg-white">
+  <section className="py-16 px-10 sm:py-24 lg:py-32 sm:px-8 lg:px-12 bg-white">
     <div className="max-w-6xl mx-auto">
-      <div className="grid md:grid-cols-2 gap-12 items-center">
+      {/* Mobile: image on top, content below. Desktop: content left, image right */}
+      <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
-        {/* LEFT — content (swapped from original right side) */}
+        {/* Content */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
+          initial={{ opacity: 0, x: -32 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          <HubotH2 fontWeight="extrabold" size={48} className="text-black mb-6 leading-tight">
+          <h2
+            className="font-hubot font-extrabold leading-tight text-black mb-5"
+            style={{ fontSize: 'clamp(26px, 4vw, 52px)' }}
+          >
             {ABOUT_VISION.heading}
-          </HubotH2>
+          </h2>
 
           <div className="space-y-4 mb-8">
             {ABOUT_VISION.body.map((paragraph, i) => (
-              <HubotP key={i} fontWeight="regular" size={15} className="text-gray-700 leading-relaxed">
+              <p
+                key={i}
+                className="font-hubot text-gray-600 leading-relaxed"
+                style={{ fontSize: 'clamp(14px, 1.3vw, 16px)' }}
+              >
                 {paragraph}
-              </HubotP>
+              </p>
             ))}
           </div>
 
@@ -34,21 +42,19 @@ const VisionSection: React.FC = () => (
           </Button>
         </motion.div>
 
-        {/* RIGHT — BumbleB image (swapped from original left side) */}
+        {/* Image */}
         <motion.div
-          className="relative rounded-2xl overflow-hidden shadow-xl"
-          style={{ aspectRatio: '4/5' }}
-          initial={{ opacity: 0, x: 40 }}
+          className="relative rounded-2xl overflow-hidden shadow-xl w-full mx-auto"
+          style={{ aspectRatio: '4/5', maxHeight: '480px', maxWidth: '400px' }}
+          initial={{ opacity: 0, x: 32 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
         >
-          <img
+          <OptimizedImage
             src={BumbleBImg}
             alt="Our vision — Urban Gravity"
-            className="w-full h-full object-cover"
-          />
-          {/* Subtle yellow tint overlay */}
+            className="w-full h-full object-cover" width={0} height={0} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" />
           <div className="absolute inset-0 bg-gradient-to-t from-yellow-400/20 via-transparent to-transparent pointer-events-none" />
         </motion.div>
 

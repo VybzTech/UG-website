@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { HubotH3, HubotP } from '@/components/ui/HubotText';
 import { CONTACT_SUPPORT_CATEGORIES } from '@/constants/utils';
 
 const containerVariants = {
@@ -14,7 +13,7 @@ const cardVariants = {
 };
 
 const ContactSupport: React.FC = () => (
-  <section className="py-20 md:py-32 px-6 md:px-12 bg-gray-50">
+  <section className="py-16 sm:py-24 lg:py-32 px-5 sm:px-8 lg:px-12 bg-gray-50">
     <div className="max-w-6xl mx-auto">
 
       <motion.div
@@ -22,9 +21,12 @@ const ContactSupport: React.FC = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="mb-14 text-center"
+        className="mb-10 sm:mb-14 text-center"
       >
-        <h2 className="font-hubot text-3xl md:text-4xl font-extrabold text-black mb-3">
+        <h2
+          className="font-hubot font-extrabold text-black mb-3"
+          style={{ fontSize: 'clamp(22px, 3.5vw, 40px)' }}
+        >
           How can we help?
         </h2>
         <p className="font-hubot text-sm text-gray-500 max-w-md mx-auto">
@@ -33,7 +35,7 @@ const ContactSupport: React.FC = () => (
       </motion.div>
 
       <motion.div
-        className="grid md:grid-cols-3 gap-8"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -43,17 +45,25 @@ const ContactSupport: React.FC = () => (
           <motion.div
             key={cat.heading}
             variants={cardVariants}
-            className="bg-white rounded-2xl p-8 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-yellow-300 group cursor-pointer"
+            className="bg-white rounded-2xl p-6 sm:p-8 shadow-md hover:shadow-lg
+                       transition-all duration-300 border border-gray-100
+                       hover:border-yellow-300 group cursor-pointer"
           >
-            <div className="text-5xl mb-5 group-hover:scale-110 transition-transform duration-300">
+            <div className="text-4xl sm:text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
               {cat.emoji}
             </div>
-            <HubotH3 fontWeight="bold" size={22} className="text-black mb-3">
+            <h3
+              className="font-hubot font-bold text-black mb-3"
+              style={{ fontSize: 'clamp(16px, 1.8vw, 22px)' }}
+            >
               {cat.heading}
-            </HubotH3>
-            <HubotP fontWeight="regular" size={13} className="text-gray-600 leading-relaxed">
+            </h3>
+            <p
+              className="font-hubot text-gray-600 leading-relaxed"
+              style={{ fontSize: 'clamp(13px, 1.1vw, 14px)' }}
+            >
               {cat.body}
-            </HubotP>
+            </p>
           </motion.div>
         ))}
       </motion.div>

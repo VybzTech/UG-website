@@ -1,70 +1,186 @@
-// app/_layout.tsx
-import { useAuthStore } from "@/store/authStore";
-import { colors } from "@/src/styles/theme/colors";
-import { Stack } from "expo-router";
-import { StatusBar } from "expo-status-bar";
-import { ActivityIndicator, View } from "react-native";
-import AppBootstrap from "./bootstrap";
-import NavigationHandler from "@/components/NavigationHandler"; // We'll create this
+Mobile-first Tenant Property Swipe UI (Urban Gravity)
 
-export default function RootLayout() {
-  const { isHydrated, isLoading } = useAuthStore();
+Prompt:
 
-  AppBootstrap();
+You are building a production-ready React component for an existing Vite + React + TypeScript + Tailwind project.
 
-  // Show loading screen while hydrating or loading
-  if (!isHydrated || isLoading) {
-    return (
-      <View
-        style={{
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: colors.background,
-        }}
-      >
-        <ActivityIndicator size="large" color={colors.primary} />
-      </View>
-    );
-  }
+IMPORTANT:
+- Do NOT create a full app
+- Do NOT include routing setup
+- Do NOT include package.json
+- Only output clean, modular components
+- Use functional components with TypeScript
+- Follow reusable component structure
 
-  // Main app navigation
-  return (
-    <>
-      <NavigationHandler />
-      <Stack screenOptions={{ headerShown: false }} initialRouteName="(auth)">
-        <Stack.Screen
-          name="index"
-          options={{
-            gestureEnabled: false,
-          }}
-        />
-        <Stack.Screen
-          name="(auth)"
-          options={{
-            gestureEnabled: false,
-          }}
-        />
-        <Stack.Screen
-          name="(courier)"
-          options={{
-            gestureEnabled: false,
-          }}
-        />
-        <Stack.Screen
-          name="(admin)"
-          options={{
-            gestureEnabled: false,
-          }}
-        />
-        <Stack.Screen
-          name="(mgt)"
-          options={{
-            gestureEnabled: false,
-          }}
-        />
-      </Stack>
-      <StatusBar style="auto" />
-    </>
-  );
+CONTEXT:
+Urban Gravity is a housing platform like Tinder for real estate.
+
+This component is for TENANTS (mobile-first).
+
+UX GOAL:
+- Fast decisions
+- Visual-first browsing
+- Minimal text
+- Smooth gestures (like Tinder swipe feel)
+
+DESIGN SYSTEM:
+- Colors: Gold (#D4AF37), Mustard, Brown/Black shades
+- Clean, modern, slightly premium feel
+- Rounded corners (xl)
+- Soft shadows
+- Card-based UI
+
+SCREEN:
+Property Swipe Card
+
+REQUIREMENTS:
+- Full-screen card
+- Property image (cover)
+- Overlay gradient for readability
+- Property price (bold, large)
+- Location (subtle)
+- Key info (beds, baths, etc.)
+- Swipe indicators (left = skip, right = interested)
+
+ACTIONS:
+- Tap → open detail modal
+- Swipe left/right (visual hint only, no complex gesture lib)
+- Buttons:
+  - ❤️ Save
+  - 🔥 Interested
+  - ❌ Skip
+
+COMPONENT BREAKDOWN:
+- PropertyCard
+- ActionButtons
+- InfoOverlay
+
+DATA (mock):
+{
+  id: string;
+  image: string;
+  price: string;
+  location: string;
+  beds: number;
+  baths: number;
 }
+
+OUTPUT:
+- Clean TSX components
+- Tailwind styling
+- No external dependencies
+- Export components individually
+
+💡 This is how you make v0 generate usable code, not junk
+
+🧩 STEP 3 — Break Pages into “Generation Units”
+
+Don’t generate full pages.
+
+Generate like this:
+
+Tenant Side
+PropertyCard (core)
+PropertyStack (Tinder-like layering)
+PropertyDetailsModal
+BottomNav (mobile)
+FilterDrawer
+Landlord Side
+ListingForm
+PropertyTable
+AnalyticsCards
+UploadMediaModal
+⚡ STEP 4 — Your Integration Flow
+
+After v0:
+
+Paste into /features/tenant/components
+Clean:
+remove inline mock data
+connect props to your API/state
+Standardize:
+replace styles with your theme tokens
+Optimize:
+memo
+lazy load heavy parts
+
+Then:
+
+👉 Use Claude to:
+
+Refactor logic
+Connect backend
+Improve performance
+🎯 Key UX Principles (DON’T MISS THIS)
+For Tenant (this is your GOLDMINE)
+
+Think:
+👉 Tinder + Airbnb hybrid
+
+Rules:
+One decision per screen
+No clutter
+Big visuals > text
+Thumb-friendly zones
+For Landlord
+
+Think:
+👉 Stripe Dashboard style
+
+Rules:
+Data clarity
+Fast actions
+Bulk operations
+Tables + cards hybrid
+🧠 Advanced Trick (This is PRO level)
+
+Feed v0 your existing component
+
+Example:
+
+Here is my existing Button component:
+
+[paste your Button.tsx]
+
+Use this exact style system when generating new components.
+
+👉 This forces consistency.
+
+🔥 What You Should Do Next (Action Plan)
+TODAY:
+Define folder structure
+Create:
+Button
+Card
+Modal (your base UI kit)
+THEN:
+
+Ask me for:
+
+👉 “Generate 5 v0 prompts for full Tenant flow”
+
+I’ll give you:
+
+Swipe
+Detail
+Chat
+Profile
+Saved listings
+
+All production-ready prompts
+
+🚀 Final Insight (Important)
+
+You’re not just building a UI…
+
+You’re building:
+
+A behavior system (like Tinder for housing)
+
+If you nail:
+
+speed
+simplicity
+addictive flow
+
+👉 Urban Gravity becomes dangerous (in a good way)

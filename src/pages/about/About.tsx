@@ -6,6 +6,8 @@ import Footer from '@/components/common/Footer';
 import VisionSection from '@/pages/about/VisionSection';
 import ServicesSection from '@/pages/about/ServicesSection';
 import AboutBg from '@/assets/images/landing/about-bg.jpg';
+import ComboText from '@/components/ui/ComboText';
+import { COLORS } from '@/constants/colors';
 
 export default function About() {
   return (
@@ -16,16 +18,24 @@ export default function About() {
         backgroundImage={AboutBg}
         overlayFrom="rgba(255, 212, 59, 0.3)"
         overlayTo="rgba(0, 0, 0, 0.45)"
-        heightClass="h-[100vh] md:h-[80vh] lg:h-[65vh]"
+        heightClass="h-[65vh] md:h-[80vh] lg:h-[100vh]"
         parallax={true}
       >
-        <HubotH1 fontWeight="extrabold" size={72} className="text-white drop-shadow-2xl">
-          About Us
-        </HubotH1>
+         <ComboText
+                firstText="About"
+                secondText="Us"
+                firstColor={"#fff"}
+                secondColor={COLORS.primary}
+                fontFamily="hubot"
+                fontWeight="bold"
+                size={60}
+                gap={1}
+              />
       </PageHero>
-
       <VisionSection />
-      <ServicesSection />
+      <div id="services">
+        <ServicesSection />
+      </div>
       <Footer />
     </main>
   );

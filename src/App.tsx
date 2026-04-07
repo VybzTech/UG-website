@@ -4,6 +4,8 @@ import AuthLayout from "@/layouts/AuthLayout";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
 import OptimizedImage from "@/components/ui/OptimizedImage";
+import PageLoader from "./PageLoader";
+import AppLayout from "./layouts/AppLayout";
 
 const Landing = lazy(() => import("@/pages/landing/Landing"));
 
@@ -16,22 +18,22 @@ const ChooseRole = lazy(() => import("@/pages/auth/ChooseRole"));
 const BasicInfo = lazy(() => import("@/pages/auth/BasicInfo"));
 const Preview = lazy(() => import("@/pages/auth/Preview"));
 
-// Tenant Pages
-// const TenantExplore = lazy(() => import("@/pages/tenant/Explore"));
-// const TenantHomes = lazy(() => import("@/pages/tenant/Homes"));
-// const TenantProfile = lazy(() => import("@/pages/tenant/Profile"));
-// const PropertyDetail = lazy(() => import("@/pages/tenant/PropertyDetail"));
-// const TenantPreferences = lazy(() => import("@/pages/tenant/Preferences"));
-// const TenantMatches = lazy(() => import("@/pages/tenant/Matches"));
-// const TenantPlans = lazy(() => import("@/pages/tenant/Plans"));
-// const TenantChat = lazy(() => import("@/pages/tenant/Chat"));
-// const LandlordProfileView = lazy(
-//   () => import("@/pages/tenant/LandlordProfile"),
-// );
-// const TenantChangePassword = lazy(
-//   () => import("@/pages/tenant/ChangePassword"),
-// );
-// const TenantSupport = lazy(() => import("@/pages/tenant/Support"));
+Tenant Pages
+const TenantExplore = lazy(() => import("@/pages/tenant/Explore"));
+const TenantHomes = lazy(() => import("@/pages/tenant/Homes"));
+const TenantProfile = lazy(() => import("@/pages/tenant/Profile"));
+const PropertyDetail = lazy(() => import("@/pages/tenant/PropertyDetail"));
+const TenantPreferences = lazy(() => import("@/pages/tenant/Preferences"));
+const TenantMatches = lazy(() => import("@/pages/tenant/Matches"));
+const TenantPlans = lazy(() => import("@/pages/tenant/Plans"));
+const TenantChat = lazy(() => import("@/pages/tenant/Chat"));
+const LandlordProfileView = lazy(
+  () => import("@/pages/tenant/LandlordProfile"),
+);
+const TenantChangePassword = lazy(
+  () => import("@/pages/tenant/ChangePassword"),
+);
+const TenantSupport = lazy(() => import("@/pages/tenant/Support"));
 
 // // Landlord Pages
 // const LandlordExplore = lazy(() => import("@/pages/landlord/Explore"));
@@ -81,22 +83,6 @@ const Preview = lazy(() => import("@/pages/auth/Preview"));
 // const SettingsAccount = lazy(() => import("@/pages/settings/Account"));
 // const SettingsSecurity = lazy(() => import("@/pages/settings/Security"));
 
-function PageLoader() {
-  return (
-    <div className="flex items-center justify-center min-h-[100vh] w-screen">
-      {/* <div className="w-8 h-8 border-3 border-primary border-t-transparent rounded-full animate-spin" /> */}
-      <OptimizedImage
-        src="../src/assets/images/ug-logo.png"
-        alt="ug-logo"
-        width={100}
-        height={100}
-        priority={true}
-        className="animate-pulse"
-      />
-    </div>
-  );
-}
-
 export default function App() {
   return (
     <Suspense fallback={<PageLoader />}>
@@ -115,25 +101,26 @@ export default function App() {
         </Route>
 
         {/* App Routes - Protected */}
-        {/* <Route element={<AppLayout />}>
-          {/* Tenant /}
-          <Route path="/tenant" element={<TenantExplore />} />
-          <Route path="/tenant/homes" element={<TenantHomes />} />
-          <Route path="/tenant/profile" element={<TenantProfile />} />
-          <Route path="/tenant/property/:id" element={<PropertyDetail />} />
-          <Route path="/tenant/preferences" element={<TenantPreferences />} />
-          <Route path="/tenant/matches" element={<TenantMatches />} />
-          <Route path="/tenant/plans" element={<TenantPlans />} />
-          <Route path="/tenant/chat" element={<TenantChat />} />
-          <Route
-            path="/tenant/landlord/:id"
-            element={<LandlordProfileView />}
-          />
-          <Route
-            path="/tenant/change-password"
-            element={<TenantChangePassword />}
-          />
-          <Route path="/tenant/support" element={<TenantSupport />} />
+        <Route element={<AppLayout />}>
+        {/* Tenant */}
+        <Route path="/tenant" element={<TenantExplore />} />
+        <Route path="/tenant/homes" element={<TenantHomes />} />
+        <Route path="/tenant/profile" element={<TenantProfile />} />
+        <Route path="/tenant/property/:id" element={<PropertyDetail />} />
+        <Route path="/tenant/preferences" element={<TenantPreferences />} />
+        <Route path="/tenant/matches" element={<TenantMatches />} />
+        <Route path="/tenant/plans" element={<TenantPlans />} />
+        <Route path="/tenant/chat" element={<TenantChat />} />
+        <Route
+          path="/tenant/landlord/:id"
+          element={<LandlordProfileView />}
+        />
+        <Route
+          path="/tenant/change-password"
+          element={<TenantChangePassword />}
+        />
+        <Route path="/tenant/support" element={<TenantSupport />} />
+        {/* 
 
           {/* Landlord /}
           <Route path="/landlord" element={<LandlordExplore />} />
@@ -156,10 +143,10 @@ export default function App() {
           <Route path="/agent/listings" element={<AgentListings />} />
           <Route path="/agent/profile" element={<AgentProfile />} />
 
+          </Route> */}
           {/* Settings /}
           <Route path="/settings/account" element={<SettingsAccount />} />
           <Route path="/settings/security" element={<SettingsSecurity />} />
-        </Route> */}
 
         {/* <Route element={<OfficerLayout />}>
           {/* Officer /}
@@ -191,7 +178,8 @@ export default function App() {
             path="/officer/notifications"
             element={<OfficerNotifications />}
           />
-        </Route> */}
+          */}
+        </Route> 
 
         {/* Public Routes */}
         <Route path="/" element={<Landing />} />

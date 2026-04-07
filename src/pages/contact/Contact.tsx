@@ -16,7 +16,8 @@ export default function Contact() {
         backgroundImage={ContactBg}
         overlayFrom="rgba(0, 0, 0, 0.67)"
         overlayTo="rgba(0, 0, 0, 0.27)"
-        heightClass="h-[100vh] md:h-[80vh] lg:h-[65vh]"
+        heightClass="h-[65vh] md:h-[80vh] lg:h-[100vh]"
+        // heightClass="h-[100vh] md:h-[80vh] lg:h-[65vh]"
         parallax={false}
       >
         <HubotH1 fontWeight="extrabold" size={72} className="text-white drop-shadow-2xl">

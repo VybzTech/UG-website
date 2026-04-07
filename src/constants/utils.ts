@@ -1,8 +1,32 @@
+
+  // ── Phone images (one per section) ─────────────────────────────────────────
+  import PhoneLogin from '@/assets/images/phones/iPhone-Login.png';
+  import PhoneMatch from '@/assets/images/phones/Match.png';
+  import PhoneMoveIn from '@/assets/images/phones/Move-In.png';
+
+  // ── Texture images used as fill inside the large number ────────────────────
+  import Texture1 from '@/assets/images/pexels-1.jpeg';
+  import Texture2 from '@/assets/images/pexels-2.jpg';
+  import Texture3 from '@/assets/images/pexels-3.jpg';
+
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Site-wide content constants
 // All copy / data used across Landing, About, and Contact pages lives here.
 // Import what you need; never hard-code strings in page components.
 // ─────────────────────────────────────────────────────────────────────────────
+
+  export interface ScrollSectionItem {
+    number: number;
+    numberImageUrl: string;
+    heading: string;
+    subtitle: string;
+    ctaLabel: string;
+    ctaHref?: string;
+    onCtaClick?: () => void;
+    phoneImageSrc: string;
+    accentColor?: string;
+  }
 
 // ── Navigation ────────────────────────────────────────────────────────────────
 export const NAV_LINKS = [
@@ -45,18 +69,27 @@ export const LANDING_SCROLL_SECTIONS = [
     heading:  "Discover Something New",
     subtitle: "Explore a world of possibilities right at your fingertips. Built for speed, designed for you.",
     ctaLabel: "Get Started",
+    numberImageUrl: Texture1,
+    phoneImageSrc: PhoneLogin,
+    accentColor: '#FFCA08',
   },
   {
     number: 2,
     heading:  "Stay Connected Always",
     subtitle: "Real-time updates, seamless sync across devices. Your life, perfectly in sync wherever you go.",
     ctaLabel: "Learn More",
+    numberImageUrl: Texture2,
+    phoneImageSrc: PhoneMatch,
+    accentColor: '#FFCA08',
   },
   {
     number: 3,
     heading:  "Achieve More Together",
     subtitle: "Collaborate with your team, share instantly, and move faster than ever before.",
     ctaLabel: "Download Now",
+    numberImageUrl: Texture3,
+    phoneImageSrc: PhoneMoveIn,
+    accentColor: '#FFCA08',
   },
 ] as const;
 

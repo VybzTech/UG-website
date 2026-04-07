@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, CheckCircle } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 import Input from '@/components/ui/Input';
 import Textarea from '@/components/ui/Textarea';
 import Button from '@/components/ui/Button';
@@ -25,19 +25,19 @@ const ContactForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Contact form submitted:', formData);
     setSubmitted(true);
     setFormData(INITIAL);
     setTimeout(() => setSubmitted(false), 4000);
   };
 
   return (
-    <div className="grid md:grid-cols-2 gap-0 rounded-2xl overflow-hidden shadow-xl border border-gray-100">
+    <div className="grid grid-cols-1 lg:grid-cols-2 rounded-2xl overflow-hidden shadow-xl border border-gray-100">
 
-      {/* ── LEFT — Form ──────────────────────────────────────────────────── */}
-      <div className="bg-white p-8 md:p-10 flex flex-col justify-between gap-8">
+      {/* ── Form ────────────────────────────────────────────────────────────── */}
+      <div className="bg-white p-6 sm:p-8 lg:p-10 flex flex-col gap-6">
         <div>
-          <h3 className="font-hubot text-2xl font-extrabold text-black mb-1">
+          <h3 className="font-hubot font-extrabold text-black mb-1"
+              style={{ fontSize: 'clamp(18px, 2.5vw, 26px)' }}>
             Send us a message
           </h3>
           <p className="font-hubot text-sm text-gray-500">
@@ -45,7 +45,7 @@ const ContactForm: React.FC = () => {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <Input
             label="Full Name"
             name="fullName"
@@ -55,7 +55,6 @@ const ContactForm: React.FC = () => {
             iconName="User"
             required
           />
-
           <Input
             label="Subject"
             name="subject"
@@ -65,7 +64,6 @@ const ContactForm: React.FC = () => {
             iconName="Tag"
             required
           />
-
           <Textarea
             label="Message"
             name="message"
@@ -76,7 +74,6 @@ const ContactForm: React.FC = () => {
             autoResize
             required
           />
-
           <Button
             type="submit"
             variant="secondary"
@@ -89,7 +86,6 @@ const ContactForm: React.FC = () => {
           </Button>
         </form>
 
-        {/* Success toast */}
         <AnimatePresence>
           {submitted && (
             <motion.div
@@ -108,17 +104,14 @@ const ContactForm: React.FC = () => {
         </AnimatePresence>
       </div>
 
-      {/* ── RIGHT — Image ────────────────────────────────────────────────── */}
-      <div className="relative min-h-[320px] md:min-h-0">
+      {/* ── Image — hidden on mobile, fills right half on desktop ───────────── */}
+      <div className="relative hidden lg:block min-h-[400px]">
         <img
           src={PostBg}
           alt="Urban Gravity — get in touch"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        {/* Gradient scrim so the image transitions into the form side */}
         <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-transparent pointer-events-none" />
-
-        {/* Floating label */}
         <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-3 shadow-lg">
           <p className="font-hubot text-xs text-gray-500">Response time</p>
           <p className="font-hubot text-sm font-bold text-gray-900">Under 24 hours</p>

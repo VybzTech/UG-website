@@ -1,7 +1,8 @@
 import React from 'react';
 
-import AppStoreBadge from '@/assets/images/apps/App_Store.svg';
+import AppStoreBadge from '@/assets/images/apps/App-store-Logo.svg';
 import GooglePlayBadge from '@/assets/images/apps/Google_Play_Store.svg';
+import OptimizedImage from './OptimizedImage';
 
 export type DownloadButtonSize = 'sm' | 'md' | 'lg';
 export type DownloadButtonLayout = 'row' | 'column';
@@ -56,7 +57,7 @@ const DownloadButton: React.FC<DownloadButtonProps> = ({
       }}
     >
       <a href={appStoreUrl} target="_blank" rel="noopener noreferrer" aria-label="Download on the App Store">
-        <img
+        <OptimizedImage
           src={AppStoreBadge}
           alt="Download on the App Store"
           width={width}
@@ -64,10 +65,11 @@ const DownloadButton: React.FC<DownloadButtonProps> = ({
           style={badgeStyle}
           onMouseEnter={handleEnter}
           onMouseLeave={handleLeave}
+
         />
       </a>
       <a href={googlePlayUrl} target="_blank" rel="noopener noreferrer" aria-label="Get it on Google Play">
-        <img
+        <OptimizedImage
           src={GooglePlayBadge}
           alt="Get it on Google Play"
           width={width}
@@ -75,6 +77,7 @@ const DownloadButton: React.FC<DownloadButtonProps> = ({
           style={badgeStyle}
           onMouseEnter={handleEnter}
           onMouseLeave={handleLeave}
+          
         />
       </a>
     </div>
